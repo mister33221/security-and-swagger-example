@@ -12,6 +12,7 @@ import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
 
+// 自定義沒有權限的例外邏輯
 @Component
 public class AuthEntryPointJwt implements AuthenticationEntryPoint {
 

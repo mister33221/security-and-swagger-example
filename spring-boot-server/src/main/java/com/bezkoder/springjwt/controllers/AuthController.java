@@ -93,11 +93,6 @@ public class AuthController {
 		Authentication authentication = authenticationManager.authenticate(
 				new UsernamePasswordAuthenticationToken(loginRequest.getUsername(), loginRequest.getPassword()));
 
-		
-
-		System.out.println("authentication:" + authentication.toString());
-		System.out.println("getContext:" + SecurityContextHolder.getContext());
-
 		SecurityContextHolder.getContext().setAuthentication(authentication);
 
 		// 產生JWT
