@@ -1,7 +1,6 @@
 package com.bezkoder.springjwt.security;
 
 import com.bezkoder.springjwt.security.services.UserDetailsServiceImpl;
-import com.bezkoder.springjwt.service.CustomUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -39,24 +38,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //	spring 開發團隊不推薦使用autowired
 	private final UserDetailsServiceImpl userDetailsService;
 
-    private final CustomUserDetailsService service;
-
     //	@Autowired
 //	spring 開發團隊不推薦使用autowired
     private AuthEntryPointJwt unauthorizedHandler;
 
-    public WebSecurityConfig(UserDetailsServiceImpl userDetailsService, CustomUserDetailsService service, AuthEntryPointJwt unauthorizedHandler) {
+    public WebSecurityConfig(UserDetailsServiceImpl userDetailsService, AuthEntryPointJwt unauthorizedHandler) {
         this.userDetailsService = userDetailsService;
-        this.service = service;
         this.unauthorizedHandler = unauthorizedHandler;
     }
-
-//	不使用autowired 推薦使用建構子
-//	public WebSecurityConfig(UserDetailsServiceImpl userDetailsService, AuthEntryPointJwt unauthorizedHandler) {
-//		super();
-//		this.userDetailsService = userDetailsService;
-//		this.unauthorizedHandler = unauthorizedHandler;
-//	}
 
     // @Bean???????????????????
     @Bean

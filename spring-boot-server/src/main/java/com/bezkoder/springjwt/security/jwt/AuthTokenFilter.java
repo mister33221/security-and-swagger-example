@@ -36,6 +36,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 			String jwt = parseJwt(request);
 			System.out.println("jwt:"+jwt);
 			if (jwt != null && jwtUtils.validateJwtToken(jwt)) {
+
 				String username = jwtUtils.getUserNameFromJwtToken(jwt);
 
 				UserDetails userDetails = userDetailsService.loadUserByUsername(username);
@@ -53,6 +54,7 @@ public class AuthTokenFilter extends OncePerRequestFilter {
 	}
 
 	private String parseJwt(HttpServletRequest request) {
+		System.out.println("getHeader:"+request.getHeader("Authorization"));
 		String headerAuth = request.getHeader("Authorization");
 
 		if (StringUtils.hasText(headerAuth) && headerAuth.startsWith("Bearer ")) {
